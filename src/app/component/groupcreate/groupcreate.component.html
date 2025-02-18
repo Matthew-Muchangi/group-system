@@ -1,0 +1,73 @@
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="row">
+    <div class="col-12">
+      <h2>Create Group</h2>
+
+      <!-- Group Name Form -->
+      <div class="mb-4">
+        <label for="groupName" class="form-label">Group Name:</label>
+        <input
+          id="groupName"
+          type="text"
+          class="form-control"
+          [(ngModel)]="groupName"
+          placeholder="Enter Group Name"
+        />
+      </div>
+
+      <button
+        (click)="createGroup()"
+        class="btn btn-success"
+        style="font-size: 1rem; width: 100%; padding: 10px;"
+      >
+        Create Group
+      </button>
+
+      <!-- Member Form -->
+      <div class="mt-5">
+        <h3>Add Members</h3>
+
+        <div class="mb-4">
+          <label for="memberName" class="form-label">Member Name:</label>
+          <input
+            id="memberName"
+            type="text"
+            class="form-control"
+            [(ngModel)]="memberName"
+            placeholder="Enter Member Name"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="savedAmount" class="form-label">Saved Amount:</label>
+          <input
+            id="savedAmount"
+            type="number"
+            class="form-control"
+            [(ngModel)]="savedAmount"
+            placeholder="Enter Saved Amount"
+          />
+        </div>
+
+        <button
+          (click)="addMember()"
+          class="btn btn-info"
+          style="font-size: 1rem; width: 100%; padding: 10px;"
+        >
+          Add Member
+        </button>
+      </div>
+
+      <!-- Display Members -->
+      <div class="mt-5" *ngIf="members.length > 0">
+        <h4>Members of {{ groupName }}:</h4>
+        <div *ngFor="let member of members" class="mb-3">
+          <div class="d-flex justify-content-between">
+            <span>{{ member.name }}</span>
+            <span>${{ member.savedAmount.toFixed(2) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
