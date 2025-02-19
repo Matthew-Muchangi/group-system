@@ -1,73 +1,127 @@
-<div class="container mt-5" style="max-width: 800px;">
-  <div class="row">
-    <div class="col-12">
-      <h2>Create Group</h2>
+<div style="max-width: 800px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+  <!-- Go Back Button -->
+  <button routerLink="/" style="
+    display: block;
+    margin-bottom: 20px;
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+  ">
+    Go Back to Home
+  </button>
 
-      <!-- Group Name Form -->
-      <div class="mb-4">
-        <label for="groupName" class="form-label">Group Name:</label>
-        <input
-          id="groupName"
-          type="text"
-          class="form-control"
-          [(ngModel)]="groupName"
-          placeholder="Enter Group Name"
-        />
-      </div>
+  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px;">Create Group</h2>
 
-      <button
-        (click)="createGroup()"
-        class="btn btn-success"
-        style="font-size: 1rem; width: 100%; padding: 10px;"
-      >
-        Create Group
-      </button>
+  <!-- Group Name Form -->
+  <div style="margin-bottom: 20px;">
+    <label for="groupName" style="font-weight: bold;">Group Name:</label>
+    <input
+      id="groupName"
+      type="text"
+      style="
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+      "
+      [(ngModel)]="groupName"
+      placeholder="Enter Group Name"
+    />
+  </div>
 
-      <!-- Member Form -->
-      <div class="mt-5">
-        <h3>Add Members</h3>
+  <button
+    (click)="createGroup()"
+    style="
+      background: #28a745;
+      color: white;
+      font-size: 1rem;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    "
+  >
+    Create Group
+  </button>
 
-        <div class="mb-4">
-          <label for="memberName" class="form-label">Member Name:</label>
-          <input
-            id="memberName"
-            type="text"
-            class="form-control"
-            [(ngModel)]="memberName"
-            placeholder="Enter Member Name"
-          />
-        </div>
+  <!-- Member Form -->
+  <div style="margin-top: 40px;">
+    <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">Add Members</h3>
 
-        <div class="mb-4">
-          <label for="savedAmount" class="form-label">Saved Amount:</label>
-          <input
-            id="savedAmount"
-            type="number"
-            class="form-control"
-            [(ngModel)]="savedAmount"
-            placeholder="Enter Saved Amount"
-          />
-        </div>
+    <div style="margin-bottom: 15px;">
+      <label for="memberName" style="font-weight: bold;">Member Name:</label>
+      <input
+        id="memberName"
+        type="text"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-top: 5px;
+        "
+        [(ngModel)]="memberName"
+        placeholder="Enter Member Name"
+      />
+    </div>
 
-        <button
-          (click)="addMember()"
-          class="btn btn-info"
-          style="font-size: 1rem; width: 100%; padding: 10px;"
-        >
-          Add Member
-        </button>
-      </div>
+    <div style="margin-bottom: 15px;">
+      <label for="savedAmount" style="font-weight: bold;">Saved Amount:</label>
+      <input
+        id="savedAmount"
+        type="number"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-top: 5px;
+        "
+        [(ngModel)]="savedAmount"
+        placeholder="Enter Saved Amount"
+      />
+    </div>
 
-      <!-- Display Members -->
-      <div class="mt-5" *ngIf="members.length > 0">
-        <h4>Members of {{ groupName }}:</h4>
-        <div *ngFor="let member of members" class="mb-3">
-          <div class="d-flex justify-content-between">
-            <span>{{ member.name }}</span>
-            <span>${{ member.savedAmount.toFixed(2) }}</span>
-          </div>
-        </div>
-      </div>
+    <button
+      (click)="addMember()"
+      style="
+        background: #17a2b8;
+        color: white;
+        font-size: 1rem;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Add Member
+    </button>
+  </div>
+
+  <!-- Display Members -->
+  <div style="margin-top: 40px;" *ngIf="members.length > 0">
+    <h4 style="text-align: center; font-size: 1.3rem; margin-bottom: 15px;">
+      Members of {{ groupName }}:
+    </h4>
+    <div *ngFor="let member of members" style="
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    ">
+      <span style="font-weight: bold;">{{ member.name }}</span>
+      <span style="color: #28a745; font-weight: bold;">${{ member.savedAmount.toFixed(2) }}</span>
     </div>
   </div>
 </div>
